@@ -8,15 +8,14 @@ def about():
     about.geometry("200x300")
     about.minsize(300, 100)
     about.maxsize(300, 100)
-    l = tk.Label(about, text="version: ac1.002\nauthor:\nMd. Mursalatul Islam Pallob", font=("bold", 16),
+    tk.Label(about, text="Age Calculator\nCreator:\nMd. Mursalatul Islam Pallob", font=("bold", 16),
                 bg="#D35400").pack()
     about.mainloop()
 
 
-# input functions
-# get the inputs from the day month year entry when cleck is clicked
-
+# input and process functions
 def func_check():
+    # cleaning display
     entry_sec.delete(0, "end")
     entry_min.delete(0, "end")
     entry_hour.delete(0, "end")
@@ -24,9 +23,13 @@ def func_check():
     entry_week.delete(0, "end")
     entry_month.delete(0, "end")
     entry_year.delete(0, "end")
+
+    # taking input
     day = int(entry_day_input.get())
     month = int(entry_month_input.get())
     year = int(entry_year_input.get())
+
+    # calculating data
     my_birthdate = datetime.datetime(day=day, month=month, year=year)
     current_time = datetime.datetime.now()  # current_time is the time when program is running
     my_days = (current_time.date() - my_birthdate.date()).days
@@ -62,103 +65,115 @@ def func_check():
 
 
 def func_clear():
+    """Clear entries of input fields"""
     entry_day_input.delete(0, "end")
     entry_month_input.delete(0, "end")
     entry_year_input.delete(0, "end")
 
 
 def enter1(*args):
+    """when enter will be clicked 1st time, focus will go to month field to take input"""
     entry_month_input.focus()
 
 
 def enter2(*args):
+    """when enter will be clicked 2nd time, focus will go to year field to take input"""
     entry_year_input.focus()
 
 
 def enter3(*args):
+    """3rd time enter click = func_check()"""
     func_check()
 
 
 def shift1(*args):
+    """shift key will clear all field and focus on day field"""
     func_clear()
     entry_day_input.focus()
 
 
-# functions end
+# setup tkinter
 wn = tk.Tk()
 wn.geometry("500x600")
-wn.minsize(485, 480)
-wn.maxsize(485, 480)
+wn.minsize(550, 480)
+wn.maxsize(550, 480)
 wn.configure(bg="#85C1E9")
 wn.title("")
-wn.iconbitmap("icon1.ico")
-# day month year input section
-label_empty = tk.Label(wn, text="Age Calculator", font=("bold", 20, "underline"), bg="#85C1E9").grid(rowspan=1,column=2)
 
-label_day_input = tk.Label(wn, bg="#85C1E9", text="Day", font=("bold", 16)).grid(row=2, column=1, padx=55)
+# day month year input section
+# header
+tk.Label(wn, text="Age Calculator", font=("bold", 20, "underline"), bg="#85C1E9").grid(rowspan=1,column=2)
+
+# day
+tk.Label(wn, bg="#85C1E9", text="Day", font=("bold", 16)).grid(row=2, column=1, padx=55)
 entry_day_input = tk.Entry(wn, bg="#D4E6F1", width=7, relief="groove", font="bold")
 entry_day_input.focus()
 entry_day_input.bind("<Return>", enter1)
 entry_day_input.grid(row=3, column=1)
 
-label_month_input = tk.Label(wn, bg="#85C1E9", text="Month", font=("bold", 16)).grid(row=2, column=2, padx=55)
+# month
+tk.Label(wn, bg="#85C1E9", text="Month", font=("bold", 16)).grid(row=2, column=2, padx=55)
 entry_month_input = tk.Entry(wn, bg="#D4E6F1", width=7, relief="groove", font="bold")
 entry_month_input.bind("<Return>", enter2)
 entry_month_input.grid(row=3, column=2)
 
-label_year_input = tk.Label(wn, bg="#85C1E9", text="Year", font=("bold", 16)).grid(row=2, column=3, padx=55)
+# year
+tk.Label(wn, bg="#85C1E9", text="Year", font=("bold", 16)).grid(row=2, column=3, padx=55)
 entry_year_input = tk.Entry(wn, bg="#D4E6F1", width=7, relief="groove", font="bold")
 entry_year_input.bind("<Return>", enter3)
 entry_year_input.bind("<Shift_L>", shift1)
 entry_year_input.bind("<Shift_R>", shift1)
 entry_year_input.grid(row=3, column=3)
 
-label_empty2 = tk.Label(wn, bg="#85C1E9", ).grid(row=5, columnspan=3)
+tk.Label(wn, bg="#85C1E9", ).grid(row=5, columnspan=3)
 
-# check clear button section
-button_check = tk.Button(wn, bg="#FADBD8", text="CHECK", font=("bold", 18), relief="raised", activeforeground="#52BE80",
+# CHECK and CLEAR button section
+tk.Button(wn, bg="#FADBD8", text="CHECK", font=("bold", 18), relief="raised", activeforeground="#52BE80",
                         width=10, command=func_check).grid(row=6, column=1)
-button_clear = tk.Button(wn, bg="#FADBD8", text="CLEAR", font=("bold", 18), relief="raised", activeforeground="#E74C3C",
+tk.Button(wn, bg="#FADBD8", text="CLEAR", font=("bold", 18), relief="raised", activeforeground="#E74C3C",
                         width=10, command=func_clear).grid(row=6, column=3)
 
-label_empty3 = tk.Label(wn, bg="#85C1E9", ).grid(row=8, columnspan=3)
+tk.Label(wn, bg="#85C1E9", ).grid(row=8, columnspan=3)
 
 # output window
-label_sec = tk.Label(wn, bg="#85C1E9", text="sec", font=("bold", 16)).grid(row=9, column=1)
+# sec
+tk.Label(wn, bg="#85C1E9", text="sec", font=("bold", 16)).grid(row=9, column=1)
 entry_sec = tk.Entry(wn, width=30, relief="raised", font="bold")
 entry_sec.grid(row=9, columnspan=4)
 
-label_min = tk.Label(wn, bg="#85C1E9", text="min", font=("bold", 16)).grid(row=10, column=1)
+# min
+tk.Label(wn, bg="#85C1E9", text="min", font=("bold", 16)).grid(row=10, column=1)
 entry_min = tk.Entry(wn, width=30, relief="raised", font="bold")
 entry_min.grid(row=10, columnspan=4)
 
-label_hour = tk.Label(wn, bg="#85C1E9", text="hour", font=("bold", 16)).grid(row=11, column=1)
+# hour
+tk.Label(wn, bg="#85C1E9", text="hour", font=("bold", 16)).grid(row=11, column=1)
 entry_hour = tk.Entry(wn, width=30, relief="raised", font="bold")
 entry_hour.grid(row=11, columnspan=4)
 
-label_day = tk.Label(wn, bg="#85C1E9", text="day", font=("bold", 16)).grid(row=12, column=1)
+# day
+tk.Label(wn, bg="#85C1E9", text="day", font=("bold", 16)).grid(row=12, column=1)
 entry_day = tk.Entry(wn, width=30, relief="raised", font="bold")
 entry_day.grid(row=12, columnspan=4)
 
-label_week = tk.Label(wn, bg="#85C1E9", text="week", font=("bold", 16)).grid(row=13, column=1)
+# week
+tk.Label(wn, bg="#85C1E9", text="week", font=("bold", 16)).grid(row=13, column=1)
 entry_week = tk.Entry(wn, width=30, relief="raised", font="bold")
 entry_week.grid(row=13, columnspan=4)
 
-label_month = tk.Label(wn, bg="#85C1E9", text="month", font=("bold", 16)).grid(row=14, column=1)
+# month
+tk.Label(wn, bg="#85C1E9", text="month", font=("bold", 16)).grid(row=14, column=1)
 entry_month = tk.Entry(wn, width=30, relief="raised", font="bold")
 entry_month.grid(row=14, columnspan=4)
 
-label_year = tk.Label(wn, bg="#85C1E9", text="year", font=("bold", 16)).grid(row=15, column=1)
+# year
+tk.Label(wn, bg="#85C1E9", text="year", font=("bold", 16)).grid(row=15, column=1)
 entry_year = tk.Entry(wn, width=30, relief="raised", font="bold")
 entry_year.grid(row=15, columnspan=4)
 
-label_empty4 = tk.Label(wn, bg="#85C1E9", ).grid(row=16, columnspan=3)
+tk.Label(wn, bg="#85C1E9", ).grid(row=16, columnspan=3)
+
 # about bottun
-button_about = tk.Button(wn, text="About", bg="#5499C7", relief="raised", activebackground="#808B96",
+tk.Button(wn, text="About", bg="#5499C7", relief="raised", activebackground="#808B96",
                         command=lambda: about()).grid(row=17, column=2)
 wn.mainloop()
-"""
-Version: ac1.002
-Author: Md. Mursalatul Islam Pallob
-        https://github.com/mursalatulpallob
-"""
