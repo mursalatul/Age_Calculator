@@ -3,6 +3,7 @@ import datetime
 
 
 # functions start
+# give necessary info about the app
 def about():
     about = tk.Tk()
     about.geometry("200x300")
@@ -91,12 +92,13 @@ def shift1(*args):
     func_clear()
     entry_day_input.focus()
 
+#*** GUI ***
 
 # setup tkinter
 wn = tk.Tk()
 wn.geometry("500x600")
-wn.minsize(550, 480)
-wn.maxsize(550, 480)
+wn.minsize(550, 550)
+wn.maxsize(550, 550)
 wn.configure(bg="#85C1E9")
 wn.title("")
 
@@ -125,55 +127,74 @@ entry_year_input.bind("<Shift_L>", shift1)
 entry_year_input.bind("<Shift_R>", shift1)
 entry_year_input.grid(row=3, column=3)
 
-tk.Label(wn, bg="#85C1E9", ).grid(row=5, columnspan=3)
+# till
+tk.Label(wn, bg="#85C1E9", text="Till (Optional)", font=("bold", 13)).grid(row=4, column=2)
+# till day input window
+entry_tillday_input = tk.Entry(wn, bg ="#D4E6F1", width=5, relief="groove", font=("bold", 10))
+entry_tillday_input.grid(row=5, column=1)
+
+# till month input window
+entry_tillmonth_input = tk.Entry(wn, bg="#D4E6F1", width=5, relief="groove", font=("bold", 10))
+entry_tillmonth_input.grid(row=5, column=2)
+
+# till year input window
+entry_tillyear_input= tk.Entry(wn, bg="#D4E6F1", width=5, relief="groove", font=("bold", 10))
+entry_tillyear_input.grid(row=5, column=3)
+
+
+tk.Label(wn, bg="#85C1E9", ).grid(row=6, columnspan=3)
 
 # CHECK and CLEAR button section
 tk.Button(wn, bg="#FADBD8", text="CHECK", font=("bold", 18), relief="raised", activeforeground="#52BE80",
-                        width=10, command=func_check).grid(row=6, column=1)
+                        width=10, command=func_check).grid(row=7, column=1)
 tk.Button(wn, bg="#FADBD8", text="CLEAR", font=("bold", 18), relief="raised", activeforeground="#E74C3C",
-                        width=10, command=func_clear).grid(row=6, column=3)
+                        width=10, command=func_clear).grid(row=7, column=3)
 
-tk.Label(wn, bg="#85C1E9", ).grid(row=8, columnspan=3)
+tk.Label(wn, bg="#85C1E9", ).grid(row=9, columnspan=3)
 
 # output window
 # sec
-tk.Label(wn, bg="#85C1E9", text="sec", font=("bold", 16)).grid(row=9, column=1)
+tk.Label(wn, bg="#85C1E9", text="sec", font=("bold", 16)).grid(row=10, column=1)
 entry_sec = tk.Entry(wn, width=30, relief="raised", font="bold")
-entry_sec.grid(row=9, columnspan=4)
+entry_sec.grid(row=10, columnspan=4)
 
 # min
-tk.Label(wn, bg="#85C1E9", text="min", font=("bold", 16)).grid(row=10, column=1)
+tk.Label(wn, bg="#85C1E9", text="min", font=("bold", 16)).grid(row=11, column=1)
 entry_min = tk.Entry(wn, width=30, relief="raised", font="bold")
-entry_min.grid(row=10, columnspan=4)
+entry_min.grid(row=11, columnspan=4)
 
 # hour
-tk.Label(wn, bg="#85C1E9", text="hour", font=("bold", 16)).grid(row=11, column=1)
+tk.Label(wn, bg="#85C1E9", text="hour", font=("bold", 16)).grid(row=12, column=1)
 entry_hour = tk.Entry(wn, width=30, relief="raised", font="bold")
-entry_hour.grid(row=11, columnspan=4)
+entry_hour.grid(row=12, columnspan=4)
 
 # day
-tk.Label(wn, bg="#85C1E9", text="day", font=("bold", 16)).grid(row=12, column=1)
+tk.Label(wn, bg="#85C1E9", text="day", font=("bold", 16)).grid(row=13, column=1)
 entry_day = tk.Entry(wn, width=30, relief="raised", font="bold")
-entry_day.grid(row=12, columnspan=4)
+entry_day.grid(row=13, columnspan=4)
 
 # week
-tk.Label(wn, bg="#85C1E9", text="week", font=("bold", 16)).grid(row=13, column=1)
+tk.Label(wn, bg="#85C1E9", text="week", font=("bold", 16)).grid(row=14, column=1)
 entry_week = tk.Entry(wn, width=30, relief="raised", font="bold")
-entry_week.grid(row=13, columnspan=4)
+entry_week.grid(row=14, columnspan=4)
 
 # month
-tk.Label(wn, bg="#85C1E9", text="month", font=("bold", 16)).grid(row=14, column=1)
+tk.Label(wn, bg="#85C1E9", text="month", font=("bold", 16)).grid(row=15, column=1)
 entry_month = tk.Entry(wn, width=30, relief="raised", font="bold")
-entry_month.grid(row=14, columnspan=4)
+entry_month.grid(row=15, columnspan=4)
 
 # year
-tk.Label(wn, bg="#85C1E9", text="year", font=("bold", 16)).grid(row=15, column=1)
+tk.Label(wn, bg="#85C1E9", text="year", font=("bold", 16)).grid(row=16, column=1)
 entry_year = tk.Entry(wn, width=30, relief="raised", font="bold")
-entry_year.grid(row=15, columnspan=4)
+entry_year.grid(row=16, columnspan=4)
 
-tk.Label(wn, bg="#85C1E9", ).grid(row=16, columnspan=3)
+tk.Label(wn, bg="#85C1E9", ).grid(row=17, columnspan=3)
+
+# exit button
+
+tk.Button(wn, text="EXIT", bg="#fc2c00", relief="raised", activebackground="#e35e17").grid(row=18, column=2)
 
 # about bottun
 tk.Button(wn, text="About", bg="#5499C7", relief="raised", activebackground="#808B96",
-                        command=lambda: about()).grid(row=17, column=2)
+                        command=lambda: about()).grid(row=19, column=1)
 wn.mainloop()
