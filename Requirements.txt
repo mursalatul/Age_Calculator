@@ -4,3 +4,4 @@ Requirements:
 		windows: https://www.python.org/ftp/python/3.8.5/python-3.8.5-amd64.exe
 		mac: https://www.python.org/ftp/python/3.8.5/python-3.8.5-macosx10.9.pkg
 		linux distro: (by default. No need to download)
+    * tkinter
