@@ -48,12 +48,12 @@ def func_check():
     my_secs = (my_mins * 60) + current_time.time().second
     entry_sec.insert(0, my_secs)
     # output week and month
-    my_weeks = my_days // 4
+    my_weeks = my_days // 7
     entry_week.insert(0, my_weeks)
-    my_extra_days_after_weeks = my_days % 4
-    my_months = my_weeks // 4
+    my_extra_days_after_weeks = my_days % 7
+    my_months = my_days // 30
     entry_month.insert(0, my_months)
-    my_extra_days_after_months = my_weeks % 4
+    my_extra_days_after_months = my_days % 30
     if my_extra_days_after_weeks != 0:
         if my_extra_days_after_weeks == 1:
             ddddd = "day"
