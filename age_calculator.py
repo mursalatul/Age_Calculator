@@ -1,6 +1,6 @@
 import tkinter as tk
 import datetime as dt
-
+import sys
 
 # functions start
 # input and process functions
@@ -239,7 +239,7 @@ tk.Label(wn, bg=WINDOW_BG_COLOR, ).grid(row=17, columnspan=3)
 
 # exit button
 
-tk.Button(wn, text="EXIT", bg="#fc2c00", relief="raised", activebackground="#e35e17",command=exit).grid(row=18, column=2)
+tk.Button(wn, text="EXIT", bg="#fc2c00", relief="raised", activebackground="#e35e17",command=sys.exit).grid(row=18, column=2)
 
 # current time and date
 current_time_label = tk.Label(wn, font=(10), bg=WINDOW_BG_COLOR)
