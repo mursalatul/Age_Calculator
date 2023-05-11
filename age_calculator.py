@@ -119,22 +119,30 @@ def shift2(*args):
     entry_tillyear_input.delete(0, "end")
     entry_tillday_input.focus()
 
+def update_current_time():
+    """update the current time after 1 second"""
+    current_time_label['text'] = dt.datetime.now().strftime("%H:%M:%S %d/%m/%Y")
+    wn.after(1000, update_current_time)
+
 #*** GUI ***
+
+# universal constant variables
+WINDOW_BG_COLOR = "#85C1E9"
 
 # setup tkinter
 wn = tk.Tk()
 wn.geometry("500x600")
 wn.minsize(550, 550)
 wn.maxsize(550, 550)
-wn.configure(bg="#85C1E9")
+wn.configure(bg=WINDOW_BG_COLOR)
 wn.title("")
 
 # day month year input section
 # header
-tk.Label(wn, text="Age Calculator", font=("bold", 20, "underline"), bg="#85C1E9").grid(rowspan=1,column=2)
+tk.Label(wn, text="Age Calculator", font=("bold", 20, "underline"), bg=WINDOW_BG_COLOR).grid(rowspan=1,column=2)
 
 # day
-tk.Label(wn, bg="#85C1E9", text="Day", font=("bold", 16)).grid(row=2, column=1, padx=55)
+tk.Label(wn, bg=WINDOW_BG_COLOR, text="Day", font=("bold", 16)).grid(row=2, column=1, padx=55)
 entry_day_input = tk.Entry(wn, bg="#D4E6F1", width=7, relief="groove", font="bold")
 entry_day_input.grid(row=3, column=1)
 entry_day_input.focus()
@@ -143,7 +151,7 @@ entry_day_input.bind("<Shift_L>", shift1)
 entry_day_input.bind("<Shift_R>", shift1)
 
 # month
-tk.Label(wn, bg="#85C1E9", text="Month", font=("bold", 16)).grid(row=2, column=2, padx=55)
+tk.Label(wn, bg=WINDOW_BG_COLOR, text="Month", font=("bold", 16)).grid(row=2, column=2, padx=55)
 entry_month_input = tk.Entry(wn, bg="#D4E6F1", width=7, relief="groove", font="bold")
 entry_month_input.grid(row=3, column=2)
 entry_month_input.bind("<Return>", enter2)
@@ -151,7 +159,7 @@ entry_month_input.bind("<Shift_L>", shift1)
 entry_month_input.bind("<Shift_R>", shift1)
 
 # year
-tk.Label(wn, bg="#85C1E9", text="Year", font=("bold", 16)).grid(row=2, column=3, padx=55)
+tk.Label(wn, bg=WINDOW_BG_COLOR, text="Year", font=("bold", 16)).grid(row=2, column=3, padx=55)
 entry_year_input = tk.Entry(wn, bg="#D4E6F1", width=7, relief="groove", font="bold")
 entry_year_input.grid(row=3, column=3)
 entry_year_input.bind("<Return>", enter3)
@@ -159,7 +167,7 @@ entry_year_input.bind("<Shift_L>", shift1)
 entry_year_input.bind("<Shift_R>", shift1)
 
 # till
-tk.Label(wn, bg="#85C1E9", text="Till (Optional)", font=("bold", 13)).grid(row=4, column=2)
+tk.Label(wn, bg=WINDOW_BG_COLOR, text="Till (Optional)", font=("bold", 13)).grid(row=4, column=2)
 # till day input window
 entry_tillday_input = tk.Entry(wn, bg ="#D4E6F1", width=5, relief="groove", font=("bold", 10))
 entry_tillday_input.grid(row=5, column=1)
@@ -181,7 +189,7 @@ entry_tillyear_input.bind("<Return>", enter6)
 entry_tillyear_input.bind("<Shift_L>", shift2)
 entry_tillyear_input.bind("<Shift_R>", shift2)
 
-tk.Label(wn, bg="#85C1E9", ).grid(row=6, columnspan=3)
+tk.Label(wn, bg=WINDOW_BG_COLOR, ).grid(row=6, columnspan=3)
 
 # CHECK and CLEAR button section
 tk.Button(wn, bg="#FADBD8", text="CHECK", font=("bold", 18), relief="raised", activeforeground="#52BE80",
@@ -189,51 +197,53 @@ tk.Button(wn, bg="#FADBD8", text="CHECK", font=("bold", 18), relief="raised", ac
 tk.Button(wn, bg="#FADBD8", text="CLEAR", font=("bold", 18), relief="raised", activeforeground="#E74C3C",
                         width=10, command=func_clear).grid(row=7, column=3)
 
-tk.Label(wn, bg="#85C1E9", ).grid(row=9, columnspan=3)
+tk.Label(wn, bg=WINDOW_BG_COLOR, ).grid(row=9, columnspan=3)
 
 # output window
 # sec
-tk.Label(wn, bg="#85C1E9", text="sec", font=("bold", 16)).grid(row=10, column=1)
+tk.Label(wn, bg=WINDOW_BG_COLOR, text="sec", font=("bold", 16)).grid(row=10, column=1)
 entry_sec = tk.Entry(wn, width=30, relief="raised", font="bold")
 entry_sec.grid(row=10, columnspan=4)
 
 # min
-tk.Label(wn, bg="#85C1E9", text="min", font=("bold", 16)).grid(row=11, column=1)
+tk.Label(wn, bg=WINDOW_BG_COLOR, text="min", font=("bold", 16)).grid(row=11, column=1)
 entry_min = tk.Entry(wn, width=30, relief="raised", font="bold")
 entry_min.grid(row=11, columnspan=4)
 
 # hour
-tk.Label(wn, bg="#85C1E9", text="hour", font=("bold", 16)).grid(row=12, column=1)
+tk.Label(wn, bg=WINDOW_BG_COLOR, text="hour", font=("bold", 16)).grid(row=12, column=1)
 entry_hour = tk.Entry(wn, width=30, relief="raised", font="bold")
 entry_hour.grid(row=12, columnspan=4)
 
 # day
-tk.Label(wn, bg="#85C1E9", text="day", font=("bold", 16)).grid(row=13, column=1)
+tk.Label(wn, bg=WINDOW_BG_COLOR, text="day", font=("bold", 16)).grid(row=13, column=1)
 entry_day = tk.Entry(wn, width=30, relief="raised", font="bold")
 entry_day.grid(row=13, columnspan=4)
 
 # week
-tk.Label(wn, bg="#85C1E9", text="week", font=("bold", 16)).grid(row=14, column=1)
+tk.Label(wn, bg=WINDOW_BG_COLOR, text="week", font=("bold", 16)).grid(row=14, column=1)
 entry_week = tk.Entry(wn, width=30, relief="raised", font="bold")
 entry_week.grid(row=14, columnspan=4)
 
 # month
-tk.Label(wn, bg="#85C1E9", text="month", font=("bold", 16)).grid(row=15, column=1)
+tk.Label(wn, bg=WINDOW_BG_COLOR, text="month", font=("bold", 16)).grid(row=15, column=1)
 entry_month = tk.Entry(wn, width=30, relief="raised", font="bold")
 entry_month.grid(row=15, columnspan=4)
 
 # year
-tk.Label(wn, bg="#85C1E9", text="year", font=("bold", 16)).grid(row=16, column=1)
+tk.Label(wn, bg=WINDOW_BG_COLOR, text="year", font=("bold", 16)).grid(row=16, column=1)
 entry_year = tk.Entry(wn, width=30, relief="raised", font="bold")
 entry_year.grid(row=16, columnspan=4)
 
-tk.Label(wn, bg="#85C1E9", ).grid(row=17, columnspan=3)
+tk.Label(wn, bg=WINDOW_BG_COLOR, ).grid(row=17, columnspan=3)
 
 # exit button
 
 tk.Button(wn, text="EXIT", bg="#fc2c00", relief="raised", activebackground="#e35e17",command=exit).grid(row=18, column=2)
 
+# current time and date
+current_time_label = tk.Label(wn, font=(10), bg=WINDOW_BG_COLOR)
+current_time_label.grid(row=18,column=3)
+update_current_time()
+
 wn.mainloop()
-
-
-#testing
