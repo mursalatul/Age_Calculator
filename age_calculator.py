@@ -72,6 +72,7 @@ def func_check():
 
 def func_clear():
     """Clear entries of input fields"""
+    
     entry_day_input.delete(0, "end")
     entry_month_input.delete(0, "end")
     entry_year_input.delete(0, "end")
@@ -243,7 +244,10 @@ tk.Button(wn, text="EXIT", bg="#fc2c00", relief="raised", activebackground="#e35
 
 # current time and date
 current_time_label = tk.Label(wn, font=(10), bg=WINDOW_BG_COLOR)
-current_time_label.grid(row=18,column=3)
+current_time_label_column=2
+current_time_label_row=18
+
+current_time_label.grid(row=current_time_label_row,column=current_time_label_column)
 update_current_time()
 
 wn.mainloop()
