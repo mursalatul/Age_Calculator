@@ -24,3 +24,4 @@ cd Age_Calculator<br>
 python age_calculator.py (windows)<br>
 python3 age_calculator.py (max/linux)<br>
 </pre>
+In some linux distro <b>tkinter</b> is not installed by default. In that case <a href="https://www.geeksforgeeks.org/how-to-install-tkinter-on-linux/">install tk</a>
